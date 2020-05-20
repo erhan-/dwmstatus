@@ -3,6 +3,7 @@
 import subprocess
 import re
 import socket
+import shlex
 from datetime import datetime
 from time import sleep
 
@@ -16,6 +17,6 @@ while True:
     hostname = socket.gethostname()
     ip_address = get_ip_address()
     status_string = f"VM: {hostname}({ip_address}) | {now}"
-    subprocess.call(['xsetroot', '-name', status_string])
+    subprocess.call(['xsetroot', '-name', shlex.quote(status_string)])
     subprocess.call(['xrandr', '--output', 'Virtual-0', '--auto'])
     sleep(2)

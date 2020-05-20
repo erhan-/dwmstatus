@@ -3,6 +3,7 @@
 import subprocess
 import re
 import socket
+import shlex
 from datetime import datetime
 from time import sleep
 
@@ -26,5 +27,5 @@ while True:
         hostname = socket.gethostname()
         ip_address = get_ip_address()
         status_string = f"{hostname}({ip_address}) | {now} | [{status_icon}] {battery_percentage}% ({time_remaining})"
-        subprocess.call(['xsetroot', '-name', status_string])
+        subprocess.call(['xsetroot', '-name', shlex.quote(status_string)])
     sleep(1)
