@@ -19,7 +19,10 @@ while True:
         status_icon = '+' if mode == 'Charging' else '-'
         now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         hostname = socket.gethostname()
-        ip_address = socket.gethostbyname(socket.gethostname())
+        try:
+            ip_address = socket.gethostbyname(socket.gethostname())
+        except:
+            ip_address = "127.0.0.1"
         status_string = f"{hostname}({ip_address}) | {now} | [{status_icon}] {battery_percentage}% ({time_remaining})"
         subprocess.call(['xsetroot', '-name', shlex.quote(status_string)])
     sleep(5)
