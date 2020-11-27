@@ -24,6 +24,6 @@ while True:
             ip_address = socket.gethostbyname(socket.gethostname())
         except:
             ip_address = "127.0.0.1"
-        status_string = f"{hostname}({ip_address}) | R: {ram}% | {now} | B: [{status_icon}] {battery_percentage}% ({time_remaining})"
+        status_string = f"{hostname}({ip_address}) | R: {ram}% | B: [{status_icon}] {battery_percentage}% ({time_remaining}) | {now}"
         subprocess.call(['xsetroot', '-name', shlex.quote(status_string)])
     sleep(5)
